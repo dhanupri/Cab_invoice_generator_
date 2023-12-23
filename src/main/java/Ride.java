@@ -5,11 +5,10 @@ public class Ride {
     public Cab cab;
     public int km;
     public String time;
-    Ride(int cabId,int riderID,String riderName,Cab cab,int km,String time) {
+    Ride(int cabId,int riderID,String riderName,int km,String time) {
         this.cabId=cabId;
         this.riderID=riderID;
         this.riderName=riderName;
-        this.cab=cab;
         this.km=km;
         this.time=time;
     }

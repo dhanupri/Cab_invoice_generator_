@@ -49,4 +49,20 @@ public class CabService_JDBC {
             throw new RuntimeException(e);
         }
     }
+    //multiple rides and aggregate total
+    public static double total_amout(){
+        Connection connection=null;
+        double total=0.0;
+        try{
+            connection=Sql_connection.getCon();
+            PreparedStatement ps = connection.prepareStatement("SELECT AVG(total_fare) AS average_fare FROM rider_detail1");
+            ResultSet resultSet=ps.executeQuery();
+            if(resultSet.next()){
+                total+=resultSet.getDouble("average_fare");
+            }
+            return  total;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
