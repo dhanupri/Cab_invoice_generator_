@@ -1,4 +1,5 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class CabService {
     public static void main(String[] args) throws SQLException {
@@ -18,5 +19,11 @@ public class CabService {
         Ride ride=new Ride(cabid,riderID,riderName,km,mins);
         CabService_JDBC.insert(ride);
         System.out.println("multiple rides and aggregate total"+CabService_JDBC.total_amout());
+        CabService_JDBC.Total_number_of_Ride();
+        System.out.println("enter the cabId: ");
+        int cabId=sc.nextInt();
+        ArrayList<Integer> arr1=CabService_JDBC.Enhanced_Invoice(cabId);
+
+
     }
 }
