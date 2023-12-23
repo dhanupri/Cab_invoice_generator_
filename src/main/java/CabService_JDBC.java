@@ -55,7 +55,7 @@ public class CabService_JDBC {
         double total=0.0;
         try{
             connection=Sql_connection.getCon();
-            PreparedStatement ps = connection.prepareStatement("SELECT AVG(total_fare) AS average_fare FROM rider_detail1");
+            PreparedStatement ps = connection.prepareStatement("SELECT SUM(total_fare) AS total FROM rider_detail1");
             ResultSet resultSet=ps.executeQuery();
             if(resultSet.next()){
                 total+=resultSet.getDouble("average_fare");
