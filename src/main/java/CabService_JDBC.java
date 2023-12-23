@@ -58,7 +58,7 @@ public class CabService_JDBC {
             PreparedStatement ps = connection.prepareStatement("SELECT SUM(total_fare) AS total FROM rider_detail1");
             ResultSet resultSet=ps.executeQuery();
             if(resultSet.next()){
-                total+=resultSet.getDouble("average_fare");
+                total+=resultSet.getDouble("total");
             }
             return  total;
         } catch (SQLException e) {
