@@ -67,7 +67,6 @@ public class CabService_JDBC {
             throw new RuntimeException(e);
         }
     }
-
     public static int Total_number_of_Ride(){
         Connection connection=null;
         try{
@@ -85,7 +84,7 @@ public class CabService_JDBC {
             throw new RuntimeException(e);
         }
     }
-
+//Enhanced service total ride,total fare,average fare
     public static ArrayList<Integer> Enhanced_Invoice(int cabId){
         ArrayList<Integer> arr=new ArrayList<>();
         Connection connection=null;
@@ -125,5 +124,27 @@ public class CabService_JDBC {
             }
         }
 
+    }
+    //invoice service
+    public static void DisplayRide(int cabId){
+        Connection connection=null;
+        try {
+            connection=Sql_connection.getCon();
+            PreparedStatement ps=connection.prepareStatement("SELECT * FROM rider_detail1 WHERE cab_id=?");
+            ps.setInt(1, cabId);
+            ResultSet resultSet=ps.executeQuery();
+           while (resultSet.next()){
+               int cab_id=resultSet.getInt("cab_id");
+               int rider_id=resultSet.getInt("rider_id");
+               String riderName=resultSet.getString("riderName");
+               int km=resultSet.getInt("km");
+               int min=resultSet.getInt("minute");
+               int total_fare=resultSet.getInt("total_fare");
+
+               System.out.println("cab id: "+cab_id+" rider id: "+rider_id+" riderName: "+riderName+" km: "+km+" minute: "+min+" total fare: "+total_fare);
+           }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

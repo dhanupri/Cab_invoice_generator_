@@ -23,7 +23,6 @@ public class CabService {
         System.out.println("enter the cabId: ");
         int cabId=sc.nextInt();
         ArrayList<Integer> arr1=CabService_JDBC.Enhanced_Invoice(cabId);
-
-
+        CabService_JDBC.DisplayRide(cabId);
     }
 }
